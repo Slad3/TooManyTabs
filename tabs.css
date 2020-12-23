@@ -1,5 +1,5 @@
 html, body {
-  width: 350px;
+  width: 500px;
 }
 
 a {
@@ -16,5 +16,11 @@ a {
 }
 
 .panel {
-  margin: 5px;
+  margin: 10px;
+}
+
+
+
+.topTab{
+	display: inline-block;
 }

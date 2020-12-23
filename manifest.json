@@ -1,0 +1,26 @@
+{
+  "applications": {
+    "gecko": {
+      "strict_min_version": "58.0a1"
+    }
+  },
+  "background": {
+      "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "browser_style": true,
+    "default_title": "BulkTabsExtension",
+    "default_popup": "tabs.html"
+  },
+  "description": "",
+  "homepage_url": "https://github.com/Slad3",
+  "manifest_version": 2,
+  "name": "Bulk Tabs",
+  "permissions": [
+    "tabs",
+    "*://developer.mozilla.org/*",
+    "webRequest"
+  ],
+  "version": "1.0"
+
+}
