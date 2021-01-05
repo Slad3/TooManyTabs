@@ -1,4 +1,9 @@
-let tabCount = 0;
+function updateCount() {
+	let length = 0;
+	return browser.tabs.query({}).then((tabs) => {
+	  return tabs.length;
+	});
+  }
 
 function update() {
   console.log("Updating");
@@ -17,19 +22,14 @@ function update() {
 
   let tabsList = document.getElementById("topTabsList");
   for (var i = 0; i < size; i++) {
-	  console.log("here")
+    console.log("here");
     var li = document.createElement("li");
-	li.innerHTML = "asdfasdfasidfasef"
+    li.innerHTML = "asdfasdfasidfasef";
     tabsList.appendChild(li);
   }
 }
 
-function updateCount() {
-  let length = 0;
-  return browser.tabs.query({}).then((tabs) => {
-    return tabs.length;
-  });
-}
+
 
 function listCommonUrls() {
   var resultDictionary = [];
@@ -144,7 +144,6 @@ function listTabs() {
   });
 }
 
-
 browser.tabs.onRemoved.addListener((tabId) => {
   update();
 });
@@ -162,14 +161,14 @@ var githubUrl = "https://github.com/";
 
 // countByURL(redditUrl)
 // countByURL(canvasUrl)
-console.log("youtube: ")
-countByURL(youtubeUrl)
+console.log("youtube: ");
+// console.log("Count: ", countByURL(youtubeUrl));
 // countByURL(googleUrl)
 // countByURL(stackoverflowUrl)
 // countByURL(githubUrl)
 
-console.log("Tabs summary");
-console.log(listCommonUrls());
+// console.log("Tabs summary");
+// console.log(listCommonUrls());
 // countByURL(microcenterUrl)
 
 update();

@@ -1,11 +1,13 @@
 html, body {
-  width: 500px;
+  width: 550px;
+  background-color: #333333;
+  color: whitesmoke;
 }
 
-a {
+/* a {
   margin: 10px;
   display: inline-block;
-}
+} */
 
 .switch-tabs {
   padding-left: 10px;
@@ -20,7 +22,26 @@ a {
 }
 
 
+#totalNumber{
+
+}
+
+
 
 .topTab{
+
+	border: 1px dashed white;
+	margin: 10px;
+	padding: 10px;
+	width: 85%;
+}
+
+.tabTitle{
 	display: inline-block;
+	margin-right: 10px;
+	clear: both;
+}
+.tabsCount{
+	float: right;
+	/* clear: both; */
 }
