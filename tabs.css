@@ -4,6 +4,15 @@ html, body {
   color: whitesmoke;
 }
 
+
+button{
+	
+	font-size: 14px;
+	text-align: center;
+
+	width: 33%;
+}
+
 /* a {
   margin: 10px;
   display: inline-block;
@@ -23,7 +32,9 @@ html, body {
 
 
 #totalNumber{
-
+	width: 100%;
+	text-align: center;
+	font-size: 24px;
 }
 
 
@@ -43,5 +54,6 @@ html, body {
 }
 .tabsCount{
 	float: right;
+	font-size: 16px;
 	/* clear: both; */
 }

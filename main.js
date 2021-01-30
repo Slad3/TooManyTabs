@@ -60,14 +60,24 @@ function listCommonUrls() {
 
     resultDictionary = resultDictionary.sort((a, b) => {
       return b.value - a.value;
-    });
+	});
+	
+	var totalTabs = document.getElementById("totalNumber");
+	totalTabs.innerHTML = `Total Number of Tabs: ${resultDictionary.length}`;
 
+
+	console.log("total tabs", resultDictionary.length)
     return resultDictionary;
   });
 }
 
-function tabsSetup(tabs) {
-  let size = 10;
+function tabsSetup(tabs, first) {
+  if (!first) {
+    console.log("here");
+    tabsList.innerHTML = "";
+    console.log("clear");
+  }
+  let size = 3;
 
   if (tabs.length < size) {
     size = tabs.length;
@@ -108,35 +118,44 @@ function tabsSetup(tabs) {
 
     tabsList.appendChild(parent);
   }
+
   return;
 }
 
-function addSingularFunctions() {
-  var singularFunctions = document.getElementById("singularFunctions");
+function addSingularFunctions(first) {
+  if (first) {
+    var singularFunctions = document.getElementById("singularFunctions");
 
-  var deleteNonPinned = document.createElement("button");
-  deleteNonPinned.id = "deleteNonPinned";
-  deleteNonPinned.innerHTML = "Delete All Non-Pinned";
-  singularFunctions.appendChild(deleteNonPinned);
 
-  var breakElement = document.createElement("br");
-  singularFunctions.appendChild(breakElement);
+	var deleteAllBlankTabs = document.createElement("button");
+    deleteAllBlankTabs.id = "deleteAllBlankTabs";
+    deleteAllBlankTabs.innerHTML = "Delete All Blank Tabs";
+    singularFunctions.appendChild(deleteAllBlankTabs);
 
-  var deleteAllYoutube = document.createElement("button");
-  deleteAllYoutube.id = "deleteAllYoutube";
-  deleteAllYoutube.innerHTML = "Delete All YouTube";
-  singularFunctions.appendChild(deleteAllYoutube);
+    var deleteNonPinned = document.createElement("button");
+    deleteNonPinned.id = "deleteNonPinned";
+    deleteNonPinned.innerHTML = "Delete All Non-Pinned";
+    singularFunctions.appendChild(deleteNonPinned);
 
-  var breakElement = document.createElement("br");
-  singularFunctions.appendChild(breakElement);
+    var breakElement = document.createElement("br");
+    singularFunctions.appendChild(breakElement);
 
-  var deleteAllGoogle = document.createElement("button");
-  deleteAllGoogle.id = "deleteAllGoogle";
-  deleteAllGoogle.innerHTML = "Delete All Google";
-  singularFunctions.appendChild(deleteAllGoogle);
+    var deleteAllYoutube = document.createElement("button");
+    deleteAllYoutube.id = "deleteAllYoutube";
+    deleteAllYoutube.innerHTML = "Delete All YouTube";
+    singularFunctions.appendChild(deleteAllYoutube);
 
-  var breakElement = document.createElement("br");
-  singularFunctions.appendChild(breakElement);
+    var breakElement = document.createElement("br");
+    singularFunctions.appendChild(breakElement);
+
+    var deleteAllGoogle = document.createElement("button");
+    deleteAllGoogle.id = "deleteAllGoogle";
+    deleteAllGoogle.innerHTML = "Delete All Google";
+    singularFunctions.appendChild(deleteAllGoogle);
+
+    var breakElement = document.createElement("br");
+    singularFunctions.appendChild(breakElement);
+  }
 }
 
 document.addEventListener("click", (e) => {
@@ -144,17 +163,20 @@ document.addEventListener("click", (e) => {
 
   if (e.target.tagName === "BUTTON") {
     url = e.target.parentElement.firstChild.innerText;
-	action = e.target.className;
-	
-	console.log(url)
-	console.log(action)
+    action = e.target.className;
 
-	if(action === "delete"){
-		deleteByURL(url)
-	}
+    console.log(url);
+    console.log(action);
 
-	if (action === "moveAll"){}
-	if (action === "listAll"){}
+    if (action === "delete") {
+      deleteByURL(url);
+    }
+
+    if (action === "moveAll") {
+      moveToEndByURL(url);
+    }
+    if (action === "listAll") {
+    }
   }
 
   if (e.target.id === "listTabs") {
@@ -172,8 +194,6 @@ function deleteByURL(inputUrl) {
     count = 0;
     var listToRemove = [];
     tabs.forEach(function (tab) {
-
-
       var startIndex = 0;
       if (tab.url.substring(0, 8) === "https://") {
         startIndex = 8;
@@ -190,19 +210,56 @@ function deleteByURL(inputUrl) {
       if (tab.url.substring(startIndex, startIndex + inputUrl.length) === inputUrl) {
         count += 1;
         listToRemove.push(tab.id);
-	  }
+      }
     });
 
     for (let tab in listToRemove) {
       browser.tabs.remove(listToRemove[tab]);
     }
     console.log("Removed: ", count, " tabs");
+    update(false);
   });
 }
 
-listCommonUrls().then((result) => {
-  console.log(result);
+function moveToEndByURL(inputUrl) {
+  browser.tabs.query({}).then((tabs) => {
+    var tabIds = [];
+    console.log("here");
 
-  tabsSetup(result);
-  addSingularFunctions();
-});
+    tabs.forEach(function (tab) {
+      var startIndex = 0;
+      if (tab.url.substring(0, 8) === "https://") {
+        startIndex = 8;
+      } else if (tab.url.substring(0, 7) === "http://") {
+        startIndex = 7;
+      } else if (tab.url.substring(0, 8) === "file:///") {
+        startIndex = 0;
+      } else if (tab.url.substring(0, 6) === "about:") {
+        startIndex = 0;
+      } else {
+        startIndex = 0;
+      }
+
+      if (tab.url.substring(startIndex, startIndex + inputUrl.length) === inputUrl) {
+        count += 1;
+        tabIds.push(tab.id);
+      }
+    });
+
+    browser.tabs.move(tabIds, { index: -1 });
+
+    console.log(`Moved ${tabIds.length} tabs to end`);
+    update(false);
+  });
+}
+
+function update(firstTime) {
+  listCommonUrls().then((result) => {
+    console.log(result);
+
+    tabsSetup(result, firstTime);
+    addSingularFunctions(firstTime);
+  });
+}
+
+update(true);
