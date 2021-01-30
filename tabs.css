@@ -1,16 +1,38 @@
-html, body {
+html,
+body {
   width: 550px;
   background-color: #333333;
   color: whitesmoke;
+  height: auto;
 }
 
+button {
+  font-size: 14px;
+  text-align: center;
 
-button{
-	
-	font-size: 14px;
+  border-radius: 5px;
+}
+
+.tabButton {
+  margin: 5px;
+  /* width: 30%; */
+  width: calc(100% / 3 - 10px);
+}
+
+.singularURLButton{
+	width: 50%;
+}
+
+.mainTitle {
+	font-size: 30px;
+	font-weight: bold;
 	text-align: center;
+}
 
-	width: 33%;
+#totalNumber {
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
 }
 
 /* a {
@@ -30,30 +52,20 @@ button{
   margin: 10px;
 }
 
-
-#totalNumber{
-	width: 100%;
-	text-align: center;
-	font-size: 24px;
+.topTab {
+  border: 1px dashed white;
+  margin: 10px;
+  padding: 10px;
+  width: 85%;
 }
 
-
-
-.topTab{
-
-	border: 1px dashed white;
-	margin: 10px;
-	padding: 10px;
-	width: 85%;
+.tabTitle {
+  display: inline-block;
+  margin-right: 10px;
+  clear: both;
 }
-
-.tabTitle{
-	display: inline-block;
-	margin-right: 10px;
-	clear: both;
-}
-.tabsCount{
-	float: right;
-	font-size: 16px;
-	/* clear: both; */
+.tabsCount {
+  float: right;
+  font-size: 16px;
+  /* clear: both; */
 }

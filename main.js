@@ -60,13 +60,12 @@ function listCommonUrls() {
 
     resultDictionary = resultDictionary.sort((a, b) => {
       return b.value - a.value;
-	});
-	
-	var totalTabs = document.getElementById("totalNumber");
-	totalTabs.innerHTML = `Total Number of Tabs: ${resultDictionary.length}`;
+    });
 
+    var totalTabs = document.getElementById("totalNumber");
+    totalTabs.innerHTML = `Total Number of Tabs: ${resultDictionary.length}`;
 
-	console.log("total tabs", resultDictionary.length)
+    console.log("total tabs", resultDictionary.length);
     return resultDictionary;
   });
 }
@@ -77,7 +76,7 @@ function tabsSetup(tabs, first) {
     tabsList.innerHTML = "";
     console.log("clear");
   }
-  let size = 3;
+  let size = 7;
 
   if (tabs.length < size) {
     size = tabs.length;
@@ -103,16 +102,19 @@ function tabsSetup(tabs, first) {
 
     var deleteButton = document.createElement("button");
     deleteButton.classList.add("delete");
+    deleteButton.classList.add("tabButton");
     deleteButton.innerHTML = "Delete All";
     parent.appendChild(deleteButton);
 
     var moveAll = document.createElement("button");
     moveAll.classList.add("moveAll");
+    moveAll.classList.add("tabButton");
     moveAll.innerHTML = "Move All to End";
     parent.appendChild(moveAll);
 
     var listAll = document.createElement("button");
     listAll.classList.add("listAll");
+    listAll.classList.add("tabButton");
     listAll.innerHTML = "List All";
     parent.appendChild(listAll);
 
@@ -126,14 +128,18 @@ function addSingularFunctions(first) {
   if (first) {
     var singularFunctions = document.getElementById("singularFunctions");
 
-
-	var deleteAllBlankTabs = document.createElement("button");
+    var deleteAllBlankTabs = document.createElement("button");
     deleteAllBlankTabs.id = "deleteAllBlankTabs";
+    deleteAllBlankTabs.classList.add("singularURLButton");
     deleteAllBlankTabs.innerHTML = "Delete All Blank Tabs";
     singularFunctions.appendChild(deleteAllBlankTabs);
 
+    var breakElement = document.createElement("br");
+    singularFunctions.appendChild(breakElement);
+
     var deleteNonPinned = document.createElement("button");
     deleteNonPinned.id = "deleteNonPinned";
+    deleteNonPinned.classList.add("singularURLButton");
     deleteNonPinned.innerHTML = "Delete All Non-Pinned";
     singularFunctions.appendChild(deleteNonPinned);
 
@@ -142,6 +148,7 @@ function addSingularFunctions(first) {
 
     var deleteAllYoutube = document.createElement("button");
     deleteAllYoutube.id = "deleteAllYoutube";
+    deleteAllYoutube.classList.add("singularURLButton");
     deleteAllYoutube.innerHTML = "Delete All YouTube";
     singularFunctions.appendChild(deleteAllYoutube);
 
@@ -150,6 +157,7 @@ function addSingularFunctions(first) {
 
     var deleteAllGoogle = document.createElement("button");
     deleteAllGoogle.id = "deleteAllGoogle";
+    deleteAllGoogle.classList.add("singularURLButton");
     deleteAllGoogle.innerHTML = "Delete All Google";
     singularFunctions.appendChild(deleteAllGoogle);
 
@@ -163,7 +171,7 @@ document.addEventListener("click", (e) => {
 
   if (e.target.tagName === "BUTTON") {
     url = e.target.parentElement.firstChild.innerText;
-    action = e.target.className;
+    action = e.target.classList[0];
 
     console.log(url);
     console.log(action);

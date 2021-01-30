@@ -5,7 +5,7 @@
     }
   },
   "background": {
-      "scripts": ["background.js"]
+    "scripts": ["background.js"]
   },
   "browser_action": {
     "browser_style": true,
@@ -16,11 +16,10 @@
   "homepage_url": "https://github.com/Slad3",
   "manifest_version": 2,
   "name": "Bulk Tabs",
-  "permissions": [
-    "tabs",
-    "*://developer.mozilla.org/*",
-    "webRequest"
-  ],
+  "icons": {
+	"48": "icon.png",
+	"96": "icon@2x.png"
+  },
+  "permissions": ["tabs", "*://developer.mozilla.org/*", "webRequest"],
   "version": "1.0"
-
 }
