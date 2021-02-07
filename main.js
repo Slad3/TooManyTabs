@@ -71,11 +71,12 @@ function listCommonUrls() {
 }
 
 function tabsSetup(tabs, first) {
-  if (!first) {
-    console.log("here");
-    tabsList.innerHTML = "";
-    console.log("clear");
-  }
+//   if (!first) {
+//     console.log("here");
+//     tabsList.innerHTML = "";
+//     console.log("clear");
+//   }
+  tabsList.innerHTML = "";
   let size = 7;
 
   if (tabs.length < size) {
@@ -112,11 +113,11 @@ function tabsSetup(tabs, first) {
     moveAll.innerHTML = "Move All to End";
     parent.appendChild(moveAll);
 
-    var listAll = document.createElement("button");
-    listAll.classList.add("listAll");
-    listAll.classList.add("tabButton");
-    listAll.innerHTML = "List All";
-    parent.appendChild(listAll);
+    // var listAll = document.createElement("button");
+    // listAll.classList.add("listAll");
+    // listAll.classList.add("tabButton");
+    // listAll.innerHTML = "List All";
+    // parent.appendChild(listAll);
 
     tabsList.appendChild(parent);
   }
@@ -167,7 +168,6 @@ function addSingularFunctions(first) {
 }
 
 document.addEventListener("click", (e) => {
-  console.log("click");
 
   if (e.target.tagName === "BUTTON") {
     url = e.target.parentElement.firstChild.innerText;
