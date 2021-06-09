@@ -4,6 +4,7 @@ body {
   background-color: #333333;
   color: whitesmoke;
   height: auto;
+
 }
 
 button {
@@ -21,6 +22,8 @@ button {
 
 .singularURLButton{
 	width: 50%;
+	margin-right: 25%;
+	color: red;
 }
 
 .mainTitle {
