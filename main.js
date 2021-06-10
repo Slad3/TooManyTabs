@@ -70,7 +70,7 @@ function listCommonUrls() {
 	});
 }
 
-function tabsSetup(tabs, first) {
+function tabsSetup(tabs, first, size) {
 	//   if (!first) {
 	//     console.log("here");
 	//     tabsList.innerHTML = "";
@@ -78,7 +78,6 @@ function tabsSetup(tabs, first) {
 	//   }
 
 	tabsList.innerHTML = "";
-	let size = 7;
 
 	if (tabs.length < size) {
 		size = tabs.length;
@@ -132,41 +131,19 @@ function addSingularFunctions(first) {
 	if (first) {
 		var singularFunctions = document.getElementById("singularFunctions");
 
-		var deleteAllBlankTabs = document.createElement("button");
-		deleteAllBlankTabs.id = "deleteAllBlankTabs";
-		deleteAllBlankTabs.classList.add("singularURLButton");
-		deleteAllBlankTabs.innerHTML = "Delete All Blank Tabs";
-		singularFunctions.appendChild(deleteAllBlankTabs);
+		let singularFunctionNames = ["Blank Tabs", "Non Pinned"];
 
-		var breakElement = document.createElement("br");
-		singularFunctions.appendChild(breakElement);
+		for (let singular of singularFunctionNames) {
+			var deleteAllTemp = document.createElement("button");
+			deleteAllTemp.id = "deleteAll" + singular.replace(" ", "");
+			deleteAllTemp.classList.add("singularURLButton");
+			deleteAllTemp.innerHTML = "Delete All " + singular;
+			singularFunctions.appendChild(deleteAllTemp);
 
-		var deleteNonPinned = document.createElement("button");
-		deleteNonPinned.id = "deleteNonPinned";
-		deleteNonPinned.classList.add("singularURLButton");
-		deleteNonPinned.innerHTML = "Delete All Non-Pinned";
-		singularFunctions.appendChild(deleteNonPinned);
+			var breakElement = document.createElement("br");
+			singularFunctions.appendChild(breakElement);
+		}
 
-		var breakElement = document.createElement("br");
-		singularFunctions.appendChild(breakElement);
-
-		var deleteAllYoutube = document.createElement("button");
-		deleteAllYoutube.id = "deleteAllYoutube";
-		deleteAllYoutube.classList.add("singularURLButton");
-		deleteAllYoutube.innerHTML = "Delete All YouTube";
-		singularFunctions.appendChild(deleteAllYoutube);
-
-		var breakElement = document.createElement("br");
-		singularFunctions.appendChild(breakElement);
-
-		var deleteAllGoogle = document.createElement("button");
-		deleteAllGoogle.id = "deleteAllGoogle";
-		deleteAllGoogle.classList.add("singularURLButton");
-		deleteAllGoogle.innerHTML = "Delete All Google";
-		singularFunctions.appendChild(deleteAllGoogle);
-
-		var breakElement = document.createElement("br");
-		singularFunctions.appendChild(breakElement);
 	}
 }
 
@@ -264,14 +241,22 @@ function moveToEndByURL(inputUrl) {
 	});
 }
 
+function getSize(){
+
+
+
+
+	return 7;
+}
+
 function update(firstTime) {
 	listCommonUrls().then((result) => {
 		console.log(result);
-		
-		
-		tabsSetup(result, firstTime);
+
+		let size = getSize();
+
+		tabsSetup(result, firstTime, size);
 		addSingularFunctions(firstTime);
-		console.log(document.documentElement.innerHTML)
 	});
 }
 
