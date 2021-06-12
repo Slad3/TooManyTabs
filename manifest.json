@@ -4,7 +4,7 @@
   },
   "browser_action": {
     "browser_style": true,
-    "default_title": "BulkTabsExtension",
+    "default_title": "TooManyTabs",
     "default_popup": "tabs.html"
   },
   "content_scripts": [
@@ -17,10 +17,9 @@
   "description": "Browser Extension",
   "homepage_url": "https://github.com/Slad3",
   "manifest_version": 2,
-  "name": "Bulk Tabs",
+  "name": "Too Many Tabs",
   "icons": {
-    "48": "icon.png",
-    "96": "icon@2x.png"
+    "48": "icons/icon.png"
   },
   "permissions": ["tabs", "*://developer.mozilla.org/*", "webRequest"],
 

@@ -1,32 +1,77 @@
 html,
 body {
   width: 550px;
-  background-color: #333333;
+  /* background-color: #333333; */
+  background-color: rgb(14, 41, 65);
+  /* color: rgb(7, 50, 84); */
+  /* background-color: #24272c; */
+  /* background-color: #213052; */
+  background-color: #29334a;
   color: whitesmoke;
   height: auto;
+
+  font-family: "Trebuchet MS", sans-serif;
 }
 
 button {
   font-size: 14px;
   text-align: center;
 
-  border-radius: 5px;
+  /* background-color: rgb(24, 156, 180); */
+
+  /* border-radius: 5px; */
+}
+
+.topTab {
+  border: 1px solid white;
+  border-radius: 7px;
+  margin: 10px;
+  /* padding: 10px; */
+
+  padding: 30px;
+  padding-top: 7px;
+
+  width: 85%;
+  /* background-color: rgb(7, 50, 84); */
+  /* background-color: #1f2d4c; */
+  background-color: #24272c;
+}
+
+.tabTitle {
+  display: inline-block;
+  margin-right: 10px;
+  clear: both;
+  font-size: 25px;
+}
+
+.tabsCount {
+  float: right;
+  font-size: 16px;
+  /* clear: both; */
 }
 
 .tabButton {
   margin: 5px;
   /* width: 30%; */
-  width: calc(100% / 3 - 10px);
+  width: calc(100% / 2.3 - 10px);
+  margin-top: 0px;
 }
 
-.singularURLButton{
-	width: 50%;
+#singularFunctions{
+	align-items: center;
+}
+
+.singularURLButton {
+  width: 50%;
+  margin-left: 25%; 
+  margin-top: 10px;
+	/* color: red; */
 }
 
 .mainTitle {
-	font-size: 30px;
-	font-weight: bold;
-	text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
 }
 
 #totalNumber {
@@ -50,22 +95,4 @@ button {
 
 .panel {
   margin: 10px;
-}
-
-.topTab {
-  border: 1px dashed white;
-  margin: 10px;
-  padding: 10px;
-  width: 85%;
-}
-
-.tabTitle {
-  display: inline-block;
-  margin-right: 10px;
-  clear: both;
-}
-.tabsCount {
-  float: right;
-  font-size: 16px;
-  /* clear: both; */
 }
