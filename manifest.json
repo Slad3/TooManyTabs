@@ -1,9 +1,4 @@
 {
-  "applications": {
-    "gecko": {
-      "strict_min_version": "58.0a1"
-    }
-  },
   "background": {
     "scripts": ["background.js"]
   },
@@ -15,11 +10,11 @@
   "content_scripts": [
     {
       "matches": ["*://*.mozilla.org/*"],
-      "js": ["main.js"],
+      "js": ["background.js","main.js"],
       "css": ["tabs.css"]
     }
   ],
-  "description": "",
+  "description": "Browser Extension",
   "homepage_url": "https://github.com/Slad3",
   "manifest_version": 2,
   "name": "Bulk Tabs",
