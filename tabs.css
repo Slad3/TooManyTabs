@@ -9,23 +9,39 @@ body {
   background-color: #29334a;
   color: whitesmoke;
   height: auto;
+  margin: 0px;
+  overflow-x: hidden;
+  
 
   font-family: "Trebuchet MS", sans-serif;
 }
 
+header {
+  margin: 0px;
+  max-width: 90%;
+}
+
+.mainTitle {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+}
+
 button {
   font-size: 14px;
+  font-weight: bold;
   text-align: center;
 
   /* background-color: rgb(24, 156, 180); */
 
-  /* border-radius: 5px; */
+  border-radius: 10px;
 }
 
 .topTab {
   border: 1px solid white;
-  border-radius: 7px;
-  margin: 10px;
+  border-radius: 5px;
+  margin: 0px;
+  margin-top: 12px;
   /* padding: 10px; */
 
   padding: 30px;
@@ -54,28 +70,27 @@ button {
   margin: 5px;
   /* width: 30%; */
   width: calc(100% / 2.3 - 10px);
-  margin-top: 0px;
-}
+  margin-top: 15px;
 
-#singularFunctions{
-	align-items: center;
+  height: 35px;
+}
+#singularFunctions {
+  align-items: center;
 }
 
 .singularURLButton {
-  width: 50%;
-  margin-left: 25%; 
+  /* width: 50%; */
+  /* margin-left: 25%;  */
+  margin-left: 15px;
+  margin-right: 7px;
   margin-top: 10px;
-	/* color: red; */
-}
-
-.mainTitle {
-  font-size: 30px;
-  font-weight: bold;
-  text-align: center;
+  height: 35px;
+  font-size: 17px;
+  /* color: red; */
 }
 
 #totalNumber {
-  width: 100%;
+  /* width: 100%; */
   text-align: center;
   font-size: 24px;
 }
@@ -95,4 +110,5 @@ button {
 
 .panel {
   margin: 10px;
+  margin-top: 0px;
 }

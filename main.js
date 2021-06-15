@@ -1,5 +1,4 @@
 let tabsList = document.getElementById("topTabsList");
-console.log("Main.js");
 
 function listCommonUrls() {
 	var resultDictionary = [];
@@ -71,11 +70,6 @@ function listCommonUrls() {
 }
 
 function tabsSetup(tabs, first, size) {
-	//   if (!first) {
-	//     console.log("here");
-	//     tabsList.innerHTML = "";
-	//     console.log("clear");
-	//   }
 
 	tabsList.innerHTML = "";
 
@@ -137,11 +131,10 @@ function addSingularFunctions(first) {
 			var deleteAllTemp = document.createElement("button");
 			deleteAllTemp.id = "deleteAll" + singular.replace(" ", "");
 			deleteAllTemp.classList.add("singularURLButton");
+			deleteAllTemp.classList.add("col-5");
 			deleteAllTemp.innerHTML = "Delete All " + singular;
 			singularFunctions.appendChild(deleteAllTemp);
 
-			var breakElement = document.createElement("br");
-			singularFunctions.appendChild(breakElement);
 		}
 
 	}
@@ -257,6 +250,7 @@ function update(firstTime) {
 
 		tabsSetup(result, firstTime, size);
 		addSingularFunctions(firstTime);
+		console.log(document.documentElement.innerHTML)
 	});
 }
 
