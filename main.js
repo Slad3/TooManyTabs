@@ -146,11 +146,28 @@ document.addEventListener("click", (e) => {
 		url = e.target.parentElement.firstChild.innerText;
 		action = e.target.classList[0];
 
-		console.log(url);
-		console.log(action);
-
 		if (action === "delete") {
 			deleteByURL(url);
+		}
+
+		if(action === "deleteCustom"){
+			url = document.getElementById("customUrlInput").value
+			
+			if(url !== ""){
+				if (url.substring(0, 8) === "https://") {
+					startIndex = 8;
+				} else if (url.substring(0, 7) === "http://") {
+					startIndex = 7;
+				} else if (url.substring(0, 8) === "file:///") {
+					startIndex = 0;
+				} else if (url.substring(0, 6) === "about:") {
+					startIndex = 0;
+				} else {
+					startIndex = 0;
+				}
+				url = url.substring(startIndex, url.length)
+				deleteByURL(url)
+			}
 		}
 
 		if (action === "moveAll") {
@@ -162,15 +179,18 @@ document.addEventListener("click", (e) => {
 
 	if (e.target.id === "listTabs") {
 		callOnActiveTab((tab) => {
-			console.log("Listing Tabs");
+			// console.log("Listing Tabs");
+			let v = 9;
 		});
 	}
 
 	e.preventDefault();
 });
 
+
+
 function deleteByURL(inputUrl) {
-	console.log("here in remove");
+
 	browser.tabs.query({}).then((tabs) => {
 		count = 0;
 		var listToRemove = [];
@@ -194,11 +214,12 @@ function deleteByURL(inputUrl) {
 			}
 		});
 
-		for (let tab in listToRemove) {
-			browser.tabs.remove(listToRemove[tab]);
+		if (window.confirm(`Delete ${listToRemove.length} tabs?`)) {
+			for (let tab in listToRemove) {
+				browser.tabs.remove(listToRemove[tab]);
+			}
+			update(false);
 		}
-		console.log("Removed: ", count, " tabs");
-		update(false);
 	});
 }
 
@@ -234,7 +255,7 @@ function moveToEndByURL(inputUrl) {
 	});
 }
 
-function getSize(){
+function getSize() {
 
 
 
@@ -242,16 +263,16 @@ function getSize(){
 	return 7;
 }
 
-function update(firstTime) {
-	listCommonUrls().then((result) => {
-		console.log(result);
+async function update(firstTime) {
 
-		let size = getSize();
+	var result = await listCommonUrls()
 
-		tabsSetup(result, firstTime, size);
-		addSingularFunctions(firstTime);
-		console.log(document.documentElement.innerHTML)
-	});
+	let size = getSize();
+
+	tabsSetup(result, firstTime, size);
+	addSingularFunctions(firstTime);
+	// console.log(document.documentElement.innerHTML)
+
 }
 
 update(true);
