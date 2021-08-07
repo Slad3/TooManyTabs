@@ -1,4 +1,4 @@
-body {
+#tabsBody {
   width: 550px;
   /* background-color: #333333; */
   background-color: rgb(14, 41, 65);
@@ -10,7 +10,6 @@ body {
   height: auto;
   margin: 0px;
   overflow-x: hidden;
-  
 
   font-family: "Trebuchet MS", sans-serif;
 }
@@ -111,21 +110,35 @@ button {
   margin-top: 0px;
 }
 
-#customUrl{
-	margin-top: 20px;
-	height: 40px;
+#customUrl {
+  margin-top: 20px;
+  height: 40px;
 }
 
-#customUrlInput{
-	height: 100%;
-	margin-left: 3%;
-	width: 55%;
-	margin-right: 7%;
+#customUrlInput {
+  height: 100%;
+  margin-left: 3%;
+  width: 55%;
+  /* margin-right: 1%; */
 
-	font-size: large;
+  font-size: large;
+}
+ 
+#customUrlButton {
+  height: 100%;
+  width: 25%;
 }
 
-#customUrlButton{
-	height: 100%;
-	width: 25%;
+#currentUrl{
+	margin-right: 1%;
+	width: 4%;
+	padding: 1px;
+
+	border: none;
+
+	/* margin-top: 5px;
+	height: 80%;
+	margin-bottom: 5px; */
+
+	border-radius: 10%;
 }

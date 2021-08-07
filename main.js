@@ -69,7 +69,7 @@ function listCommonUrls() {
 	});
 }
 
-function tabsSetup(tabs, first, size) {
+function tabsSetup(tabs, size) {
 
 	tabsList.innerHTML = "";
 
@@ -140,7 +140,17 @@ function addSingularFunctions(first) {
 	}
 }
 
-document.addEventListener("click", (e) => {
+function callOnActiveTab(callback) {
+	browser.tabs.query({currentWindow: true}).then((tabs) => {
+	  for (var tab of tabs) {
+		if (tab.active) {
+		  callback(tab, tabs);
+		}
+	  }
+	});
+  }
+
+document.addEventListener("click", async (e) => {
 
 	if (e.target.tagName === "BUTTON") {
 		url = e.target.parentElement.firstChild.innerText;
@@ -175,13 +185,26 @@ document.addEventListener("click", (e) => {
 		}
 		if (action === "listAll") {
 		}
+
+
 	}
 
 	if (e.target.id === "listTabs") {
 		callOnActiveTab((tab) => {
-			// console.log("Listing Tabs");
 			let v = 9;
 		});
+	}
+
+	if (e.target.id === "currentUrl"){
+
+		callOnActiveTab((tab) =>{
+			console.log(tab)
+
+			var customUrlInput = document.getElementById("customUrlInput")
+
+			customUrlInput.value = tab.url
+		})
+
 	}
 
 	e.preventDefault();
@@ -256,10 +279,6 @@ function moveToEndByURL(inputUrl) {
 }
 
 function getSize() {
-
-
-
-
 	return 7;
 }
 
@@ -269,7 +288,7 @@ async function update(firstTime) {
 
 	let size = getSize();
 
-	tabsSetup(result, firstTime, size);
+	tabsSetup(result, size);
 	addSingularFunctions(firstTime);
 	// console.log(document.documentElement.innerHTML)
 
