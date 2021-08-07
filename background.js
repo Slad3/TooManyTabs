@@ -12,7 +12,7 @@ function update() {
 
   updateCount().then((length) => {
     console.log(`Tabs count: ${length}`);
-    totalNumberElement.innerHTML = `Total # of tabs: ${length}`;
+    totalNumberElement.innerText = `Total # of tabs: ${length}`;
   });
 
   var urls = listCommonUrls();
@@ -23,7 +23,7 @@ function update() {
   let tabsList = document.getElementById("topTabsList");
   for (var i = 0; i < size; i++) {
     var li = document.createElement("li");
-    li.innerHTML = "asdfasdfasidfasef";
+    li.innerText = "asdfasdfasidfasef";
     tabsList.appendChild(li);
   }
 }

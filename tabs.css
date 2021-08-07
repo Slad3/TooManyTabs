@@ -122,23 +122,23 @@ button {
   /* margin-right: 1%; */
 
   font-size: large;
+
+  border-radius: 10px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
  
 #customUrlButton {
   height: 100%;
-  width: 25%;
+  width: 28%;
 }
 
 #currentUrl{
 	margin-right: 1%;
 	width: 4%;
 	padding: 1px;
-
 	border: none;
-
-	/* margin-top: 5px;
-	height: 80%;
-	margin-bottom: 5px; */
-
-	border-radius: 10%;
+	border-radius: 5px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
 }

@@ -62,7 +62,7 @@ function listCommonUrls() {
 		});
 
 		var totalTabs = document.getElementById("totalNumber");
-		totalTabs.innerHTML = `Total Number of Tabs: ${resultDictionary.length}`;
+		totalTabs.innerText = `Total Number of Tabs: ${resultDictionary.length}`;
 
 		console.log("total tabs", resultDictionary.length);
 		return resultDictionary;
@@ -71,7 +71,7 @@ function listCommonUrls() {
 
 function tabsSetup(tabs, size) {
 
-	tabsList.innerHTML = "";
+	tabsList.innerText = "";
 
 	if (tabs.length < size) {
 		size = tabs.length;
@@ -98,19 +98,19 @@ function tabsSetup(tabs, size) {
 		var deleteButton = document.createElement("button");
 		deleteButton.classList.add("delete");
 		deleteButton.classList.add("tabButton");
-		deleteButton.innerHTML = "Delete All";
+		deleteButton.innerText = "Delete All";
 		parent.appendChild(deleteButton);
 
 		var moveAll = document.createElement("button");
 		moveAll.classList.add("moveAll");
 		moveAll.classList.add("tabButton");
-		moveAll.innerHTML = "Move All to End";
+		moveAll.innerText = "Move All to End";
 		parent.appendChild(moveAll);
 
 		// var listAll = document.createElement("button");
 		// listAll.classList.add("listAll");
 		// listAll.classList.add("tabButton");
-		// listAll.innerHTML = "List All";
+		// listAll.innerText = "List All";
 		// parent.appendChild(listAll);
 
 		tabsList.appendChild(parent);
@@ -132,7 +132,7 @@ function addSingularFunctions(first) {
 			deleteAllTemp.id = "deleteAll" + singular.replace(" ", "");
 			deleteAllTemp.classList.add("singularURLButton");
 			deleteAllTemp.classList.add("col-5");
-			deleteAllTemp.innerHTML = "Delete All " + singular;
+			deleteAllTemp.innerText = "Delete All " + singular;
 			singularFunctions.appendChild(deleteAllTemp);
 
 		}
@@ -290,7 +290,7 @@ async function update(firstTime) {
 
 	tabsSetup(result, size);
 	addSingularFunctions(firstTime);
-	// console.log(document.documentElement.innerHTML)
+	// console.log(document.documentElement.innerText)
 
 }
 
