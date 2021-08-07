@@ -7,7 +7,7 @@
 	"browser_action": {
 		"browser_style": true,
 		"default_title": "TooManyTabs",
-		"default_popup": "tabs.html"
+		"default_popup": "./src/tabs.html"
 	},
 	"content_scripts": [
 		{
